@@ -83,6 +83,22 @@ public class FlightCollection implements FlightDao {
         }
     }
 
+    public static void showAllFlights() throws IOException {
+
+        String fileName = "flightsList.txt";
+        File file = new File(fileName);
+
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+
+
+            while ((line = br.readLine()) != null) {
+
+                System.out.println(line);
+            }
+        }
+    }
+
         public static Map<String, Integer> flightSeatsMap() throws IOException {
         getAll();
             for (int i=0; i<31; i++) {

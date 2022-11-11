@@ -12,7 +12,7 @@ public class Login {
 
         Scanner sc = new Scanner(System.in);
         Start start = new Start();
-        System.out.print("Please, enter your fullname: ");
+        System.out.print("Please, enter your username: ");
         String username = sc.nextLine();
         usernames.add(username);
         start.start();

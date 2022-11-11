@@ -26,6 +26,7 @@ public class BookingController {
     StringBuilder sb = new StringBuilder();
     StringBuilder names = new StringBuilder();
     static Scanner sc = new Scanner(System.in);
+
     public void searchAndBook() throws IOException {
 
         flightCollection.getAll();
@@ -93,18 +94,37 @@ public class BookingController {
             }
         }
     }
+
     public static void viewMyFlights() throws IOException {
         bookingCollection.getBookedFlights();
         System.out.println("Input passenger name for finding flight:");
         String passenger = sc.nextLine();
-        for (int i=0; i<bookingCollection.bookedFlights.size(); i++) {
+        for (int i = 0; i < bookingCollection.bookedFlights.size(); i++) {
             if (bookingCollection.bookedFlights.get(i).contains(login.usernames.get(0)) && bookingCollection.bookedFlights.get(i).contains(passenger)) {
                 String[] myFlight = bookingCollection.bookedFlights.get(i).split("=", 2);
-                for (int j=1; j<myFlight.length; j++) {
+                for (int j = 1; j < myFlight.length; j++) {
                     if (j % 2 == 1) {
                         System.out.println(myFlight[j]);
                     }
                 }
+            }
+        }
+    }
+
+    public static void cancelBooking() throws IOException {
+        System.out.println("Please, enter flight ID to cancel:");
+        String cancelID = sc.nextLine();
+        for (int i = 0; i < bookingCollection.bookedFlights.size(); i++) {
+            if (bookingCollection.bookedFlights.get(i).contains(login.usernames.get(0))) {
+                bookingCollection.bookedFlights.remove(i);
+            }
+            for (int j = 0; j < bookingCollection.bookedFlights.size(); j++) {
+                String fileName = "bookList.txt";
+                File file = new File(fileName);
+                BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                writer.write(String.valueOf(bookingCollection.bookedFlights.get(i)));
+                writer.write("\n");
+                writer.close();
             }
         }
     }
