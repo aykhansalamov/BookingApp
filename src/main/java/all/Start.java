@@ -13,6 +13,7 @@ public class Start {
         FlightController flightController = new FlightController();
         FlightCollection flightCollection = new FlightCollection();
         BookingController bookingController = new BookingController();
+        FlightController.createFlights();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("==BOOKING APP==");

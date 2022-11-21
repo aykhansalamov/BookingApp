@@ -18,16 +18,16 @@ import static java.lang.String.valueOf;
 
 public class FlightController {
 
-    FlightService flightService = new FlightService();
-    FlightCollection flightCollection = new FlightCollection();
-    Flight flight = new Flight();
-    BookingCollection bookingCollection = new BookingCollection();
+    static FlightService flightService = new FlightService();
+    static FlightCollection flightCollection = new FlightCollection();
+    static Flight flight = new Flight();
+    static BookingCollection bookingCollection = new BookingCollection();
 
-    List<Flight> flights = new ArrayList<>();
+    static List<Flight> flights = new ArrayList<>();
     int index;
 
 
-    public void createFlights() throws IOException {
+    public static void createFlights() throws IOException {
         flightCollection.destination();
         flight.id = 101;
         flight.seats = 180;

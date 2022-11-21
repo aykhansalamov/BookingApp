@@ -99,99 +99,17 @@ public class FlightCollection implements FlightDao {
         }
     }
 
-        public static Map<String, Integer> flightSeatsMap() throws IOException {
-        getAll();
-            for (int i=0; i<31; i++) {
+        public static void withSeats() {
+        try {
+            getAll();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        for (int i=0; i<31; i++) {
               flightsWithSeats.put(flightsFromDB.get(i).substring(0, flightsFromDB.get(i).length()-3), Integer.valueOf(flightsFromDB.get(i).substring(flightsFromDB.get(i).length()-3, flightsFromDB.get(i).length()-1+1)));
             }
-            return flightsWithSeats;
         }
 
-//    static FlightService flightService = new FlightService();
-//    public static Map<Integer, String> flightsFromDB;
-//
-//    public static void putFlightIdToToDB() throws IOException {
-//
-//        String fileName = "flightidto.txt";
-//        File file = new File(fileName);
-//        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-//        writer.write(valueOf(flightService.createFlightsIdTo()));
-//        writer.close();
-//    }
-//
-//    public static void putFlightIdSeatsToDB() throws IOException {
-//
-//        String fileName = "flightidseats.txt";
-//        File file = new File(fileName);
-//        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-//        writer.write(valueOf(flightService.createFlightsIdSeats()));
-//        writer.close();
-//    }
-//
-//    public static Map<Integer, String> getFlightIdToFromDB() throws IOException {
-//        flightsFromDB = new HashMap<>();
-//        String fileName = "flightidto.txt";
-//        File file = new File(fileName);
-//        ArrayList<String> fl = new ArrayList<>();
-//
-//        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-//            String line;
-//            String str;
-//
-//            while ((line = br.readLine()) != null) {
-//                str = line.substring(1);
-//                fl.add(str);
-//            }
-//
-//            fl.remove(31);
-//            String st = fl.get(0).substring(2);
-//
-//            flightsFromDB.put(1, st);
-//            for (int i = 1; i < 9; i++) {
-//                String s = fl.get(i).substring(3);
-//
-//                flightsFromDB.put(i + 1, s);
-//            }
-//            for (int i = 9; i < fl.toArray().length; i++) {
-//                String s1 = fl.get(i).substring(4);
-//
-//                flightsFromDB.put(i + 1, s1);
-//            }
-//        }
-//
-//
-//        return flightsFromDB;
-//    }
-//
-//    public Map<Integer, String> getFlightIdSeatsFromDB() throws IOException {
-//        List<String> idSeats = new ArrayList<>();
-//        Map<Integer, String> seatsMap = new HashMap<>();
-//        String fileName = "flightidseats.txt";
-//        File file = new File(fileName);
-//        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-//            String line;
-//            String str;
-//            String s;
-//            while ((line = br.readLine()) != null) {
-//                str = line.substring(1);
-//                s = str + "\n";
-//                idSeats.add(s);
-//            }
-//            idSeats.remove(31);
-//            seatsMap.put(Integer.valueOf(idSeats.get(0)), String.valueOf(idSeats.get(0).substring(3, 6)));
-//            Integer id = 1;
-//            for (int i = 1; i < 31; i++) {
-//                idSeats.get(i).substring(3);
-//// Integer seat = 3;
-//                String seat = idSeats.get(i).substring(3, 6);
-//                id++;
-//                seatsMap.put(id, seat);
-//            }
-//
-//
-//            return seatsMap;
-//        }
-//    }
 
 
 

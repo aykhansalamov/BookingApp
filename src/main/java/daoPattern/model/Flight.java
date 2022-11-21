@@ -3,7 +3,7 @@ package daoPattern.model;
 public class Flight {
     public Integer id;
     String time;
-    public String from = "KIEV, UKRAINE";
+    public String from = "KIEV - UKRAINE";
     Object to;
     public Integer seats;
 
